@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="上传2MB以下的图片到指定路径uploadFile-front.php123456789101112131415&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;	&amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;	&amp;lt;title&amp;gt;upload file&amp;lt;/title&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;body&amp;gt; 	&amp;lt;form action">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP常用功能模块">
+<meta property="og:url" content="http:LewisZhong.github.io/2018/03/17/PHP2/index.html">
+<meta property="og:site_name" content="Mr.Lewis的博客">
+<meta property="og:description" content="上传2MB以下的图片到指定路径uploadFile-front.php123456789101112131415&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;	&amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;	&amp;lt;title&amp;gt;upload file&amp;lt;/title&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;body&amp;gt; 	&amp;lt;form action">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-16T22:32:39.620Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP常用功能模块">
+<meta name="twitter:description" content="上传2MB以下的图片到指定路径uploadFile-front.php123456789101112131415&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;	&amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;	&amp;lt;title&amp;gt;upload file&amp;lt;/title&amp;gt;&amp;lt;/head&amp;gt;&amp;lt;body&amp;gt; 	&amp;lt;form action">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http:LewisZhong.github.io/2018/03/17/PHP2/"/>
+
+
+
+
+
+  <title>PHP常用功能模块 | Mr.Lewis的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/LewisZhong"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Lewis的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">所谓博客，不过孤芳自赏</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-简历">
+          <a href="/resume/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            简历
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-友链">
+          <a href="/links/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-link"></i> <br />
+            
+            友链
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http:LewisZhong.github.io/2018/03/17/PHP2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mr.Lewis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://cdn.duitang.com/uploads/item/201505/13/20150513130159_szPUr.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Lewis的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">PHP常用功能模块</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-17T05:52:04+08:00">
+                2018-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/语言学习/" itemprop="url" rel="index">
+                    <span itemprop="name">语言学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  774
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="上传2MB以下的图片到指定路径"><a href="#上传2MB以下的图片到指定路径" class="headerlink" title="上传2MB以下的图片到指定路径"></a>上传2MB以下的图片到指定路径</h3><h4 id="uploadFile-front-php"><a href="#uploadFile-front-php" class="headerlink" title="uploadFile-front.php"></a>uploadFile-front.php</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">	&lt;title&gt;upload file&lt;/title&gt;</div><div class="line"></div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"> 	&lt;form action = &quot;uploadFile-end.php&quot; method = &quot;post&quot; enctype = &quot;multipart/form-data&quot;&gt;</div><div class="line"> 		&lt;input type = &quot;file&quot; name = &quot;file&quot;&gt;</div><div class="line"> 		&lt;input type = &quot;submit&quot; value = &quot;submit&quot;&gt;</div><div class="line"> 	&lt;/form&gt;</div><div class="line"></div><div class="line"> 	</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h4 id="uploadFile-end-php"><a href="#uploadFile-end-php" class="headerlink" title="uploadFile-end.php"></a>uploadFile-end.php</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line">&lt;?php </div><div class="line">	$fileInfo = $_FILES[&apos;file&apos;];</div><div class="line">	#返回错误原因，若为0则继续下一步操作</div><div class="line">	if($fileInfo[&apos;error&apos;] &gt; 0)&#123;</div><div class="line">		switch ($_FILES[&apos;file&apos;][&apos;error&apos;]) &#123;</div><div class="line">			case &apos;1&apos;:</div><div class="line">	           echo &apos;文件过大&apos;;</div><div class="line">	           break;</div><div class="line">	        case &apos;2&apos;:</div><div class="line">	           echo &apos;文件超出指定大小&apos;;</div><div class="line">	           break;</div><div class="line">	        case &apos;3&apos;:</div><div class="line">	           echo &apos;只有部分文件被上传&apos;;</div><div class="line">	           break;</div><div class="line">	        case &apos;4&apos;:</div><div class="line">	           echo &apos;文件没有被上传&apos;;</div><div class="line">	           break;</div><div class="line">	        case &apos;6&apos;:</div><div class="line">	           echo &apos;找不到指定文件夹&apos;;</div><div class="line">	           break;</div><div class="line">	        case &apos;7&apos;:</div><div class="line">	           echo &apos;文件写入失败&apos;;</div><div class="line">	           break;</div><div class="line">	        default:</div><div class="line">	           echo &quot;上传出错&lt;br/&gt;&quot;;</div><div class="line">	   </div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	else&#123;</div><div class="line">		</div><div class="line">		#指定上传文件大小不得超过2MB</div><div class="line">		$MAX_FILE_SIZE = 2048000;</div><div class="line">		if ($fileInfo[&apos;size&apos;] &gt; $MAX_FILE_SIZE) &#123;</div><div class="line">			exit(&quot;The file is bigger than 2MB&quot;);</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		#指定上传文件的类型必须为图片，以.jpg,.gif,.png结尾</div><div class="line">		$allowSuffix = array(&apos;jpg&apos;,&apos;gif&apos;,&apos;png&apos;);</div><div class="line">		$allowType = array(&quot;image/gif&quot;,&quot;image/jpg&quot;,&quot;image/png&quot;,&quot;image/jpeg&quot;);</div><div class="line">		$arrImageName = explode(&quot;.&quot;, $fileInfo[&apos;name&apos;]);</div><div class="line">		$myImageSuffix = array_pop($arrImageName);</div><div class="line">		$myImageType = $fileInfo[&apos;type&apos;];</div><div class="line">		if(!in_array($myImageSuffix, $allowSuffix))&#123;</div><div class="line">			exit(&quot;The suffix of file is unconformity&quot;);</div><div class="line">		&#125;</div><div class="line">		if (!in_array($myImageType, $allowType)) &#123;</div><div class="line">			exit(&quot;The type of file is unconformity&quot;);</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		#指定上传路径与上传后文件的名称</div><div class="line">		$path = &quot;/home/lewis/upload/image/&quot;;</div><div class="line">		$name = date(&apos;Y&apos;).date(&apos;m&apos;).date(&apos;d&apos;).date(&apos;H&apos;).date(&apos;i&apos;).date(&apos;s&apos;).&apos;byLewis.&apos;.$myImageSuffix;</div><div class="line"></div><div class="line">		#上传</div><div class="line">		if(is_uploaded_file($fileInfo[&apos;tmp_name&apos;])) &#123;	</div><div class="line">			if(move_uploaded_file($fileInfo[&apos;tmp_name&apos;], $path.$name))&#123;</div><div class="line">				echo &quot;Upload successful!&lt;br&gt;&quot;;</div><div class="line">			&#125;</div><div class="line">			else </div><div class="line">				echo &quot;Fail to upload!&lt;br&gt;&quot;;</div><div class="line">		&#125;</div><div class="line">		else</div><div class="line">			echo &quot;The file is not upload file&quot;;</div><div class="line"></div><div class="line">		#输出上传文件的信息</div><div class="line">		echo &quot;返回的错误类型是：&quot;.&apos;&lt;font color=&quot;red&quot;&gt;&apos;.$fileInfo[&apos;error&apos;].&apos;&lt;/font&gt;&lt;br&gt;&apos;;</div><div class="line">		echo &quot;上传文件的名称是： &quot;.&apos;&lt;font color=&quot;red&quot;&gt;&apos;.$fileInfo[&apos;name&apos;].&apos;&lt;/font&gt;&lt;br&gt;&apos;;</div><div class="line">		echo &quot;上传文件的类型是： &quot;.&apos;&lt;font color=&quot;red&quot;&gt;&apos;.$fileInfo[&apos;type&apos;].&apos;&lt;/font&gt;&lt;br&gt;&apos;;</div><div class="line">		echo &quot;上传文件的大小是：&quot;.&apos;&lt;font color=&quot;red&quot;&gt;&apos;.$fileInfo[&apos;size&apos;].&apos;B&lt;/font&gt;&lt;br&gt;&apos;;</div><div class="line">		echo &quot;上传文件的临时文件名是： &quot;.&apos;&lt;font color=&quot;red&quot;&gt;&apos;.$fileInfo[&apos;tmp_name&apos;].&apos;&lt;/font&gt;&lt;br&gt;&apos;;</div><div class="line">	</div><div class="line">	&#125;</div><div class="line"></div><div class="line"> ?&gt;</div></pre></td></tr></table></figure>
+<h3 id="验证码（需要PHP支持GD库）"><a href="#验证码（需要PHP支持GD库）" class="headerlink" title="验证码（需要PHP支持GD库）"></a>验证码（需要PHP支持GD库）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">check_code(100,40);</div><div class="line">function check_code($width, $height, $num = 4, $type = &apos;jpeg&apos;) &#123;</div><div class="line">   $img = imagecreate($width, $height);</div><div class="line">   $string = &apos;&apos;;</div><div class="line">   for ($i = 0; $i &lt; $num; $i++) &#123;</div><div class="line">       $rand = mt_rand(0, 2);</div><div class="line">       switch ($rand) &#123;</div><div class="line">           case 0:</div><div class="line">               $ascii = mt_rand(48, 57); //0-9</div><div class="line">               break;</div><div class="line">           case 1:</div><div class="line">               $ascii = mt_rand(65, 90); //A-Z</div><div class="line">               break;</div><div class="line"></div><div class="line">           case 2:</div><div class="line">               $ascii = mt_rand(97, 122); //a-z</div><div class="line">               break;</div><div class="line">       &#125;</div><div class="line">       //chr()</div><div class="line">       $string .= sprintf(&apos;%c&apos;, $ascii);</div><div class="line"></div><div class="line">   &#125;</div><div class="line">   //背景颜色</div><div class="line">   imagefilledrectangle($img, 0, 0, $width, $height, randBg($img));</div><div class="line"></div><div class="line">   //画干扰元素</div><div class="line"></div><div class="line">   for ($i = 0; $i &lt; 50; $i++) &#123;</div><div class="line"></div><div class="line">       imagesetpixel($img, mt_rand(0, $width), mt_rand(0, $height), randPix($img));</div><div class="line"></div><div class="line">   &#125;</div><div class="line">   //写字</div><div class="line">   for ($i = 0; $i &lt; $num; $i++) &#123;</div><div class="line">       $x = floor($width / $num) * $i + 2;</div><div class="line">       $y = mt_rand(0, $height - 15);</div><div class="line"></div><div class="line">       imagechar($img, 5, $x, $y, $string[$i], randPix($img));</div><div class="line"></div><div class="line">   &#125;</div><div class="line"></div><div class="line">   //imagejpeg</div><div class="line"></div><div class="line">   $func = &apos;image&apos; . $type;</div><div class="line"></div><div class="line">   $header = &apos;Content-type:image/&apos; . $type;</div><div class="line"></div><div class="line">   if (function_exists($func)) &#123;</div><div class="line">       header($header);</div><div class="line">       $func($img);</div><div class="line">   &#125; else &#123;</div><div class="line"></div><div class="line">       echo &apos;图片类型不支持&apos;;</div><div class="line">   &#125;</div><div class="line">   imagedestroy($img);</div><div class="line">   return $string;</div><div class="line"></div><div class="line">&#125;</div><div class="line">//浅色的背景</div><div class="line">function randBg($img) &#123;</div><div class="line">   return imagecolorallocate($img, mt_rand(130, 255), mt_rand(130, 255), mt_rand(130, 255));</div><div class="line">&#125;</div><div class="line">//深色的字或者点这些干 扰元素</div><div class="line">function randPix($img) &#123;</div><div class="line">   return imagecolorallocate($img, mt_rand(0, 120), mt_rand(0, 120), mt_rand(0, 120));</div><div class="line">&#125;</div><div class="line"></div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<h3 id="基于文件的留言板"><a href="#基于文件的留言板" class="headerlink" title="基于文件的留言板"></a>基于文件的留言板</h3><p><strong>运行成功的前提条件：需要在/home/lewis目录下有message.txt这个文件</strong></p>
+<h4 id="message-front-php"><a href="#message-front-php" class="headerlink" title="message-front.php:"></a>message-front.php:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;h1&gt;message board&lt;/h1&gt;</div><div class="line">&lt;form action = &quot;message-end.php&quot; method=&quot;post&quot;&gt;</div><div class="line">	username:&lt;input type = &quot;text&quot; name = &quot;username&quot;&gt;&lt;br&gt;&lt;br&gt;</div><div class="line">	contents : &lt;input type = &quot;text&quot; name = &quot;contents&quot;&gt;&lt;br&gt;</div><div class="line">	&lt;input type=&quot;submit&quot; value=&quot;submit&quot;&gt;</div><div class="line">&lt;/form&gt;</div><div class="line"></div><div class="line">&lt;?php </div><div class="line">	$fp = fopen(&apos;/home/lewis/message.txt&apos;, &apos;r&apos;);</div><div class="line">	$mString = file_get_contents(&apos;/home/lewis/message.txt&apos;);</div><div class="line"></div><div class="line">	$arr = explode(&apos;$$&apos;, $mString);</div><div class="line"></div><div class="line">	foreach ($arr as $link) &#123;</div><div class="line">		 list($username, $content, $time) = explode(&apos;$&apos;, $link);</div><div class="line">        echo &apos;用户名为:&apos;.$username.&apos;&lt;br&gt;内容为:&apos;.$content.&apos;&lt;br&gt;时间为:&apos;.date(&apos;Y-m-d H:i:s&apos;,$time);</div><div class="line">        echo &apos;&lt;hr /&gt;&apos;;				</div><div class="line">	&#125;</div><div class="line"> ?&gt;</div></pre></td></tr></table></figure>
+<h4 id="message-end-php"><a href="#message-end-php" class="headerlink" title="message-end.php"></a>message-end.php</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;?php </div><div class="line">	date_default_timezone_set(&quot;PRC&quot;);</div><div class="line"></div><div class="line">	$username = $_POST[&apos;username&apos;];</div><div class="line"></div><div class="line">	$contents = $_POST[&apos;contents&apos;];</div><div class="line"></div><div class="line">	$time = time();</div><div class="line"></div><div class="line">	$mString = $username.&apos;$&apos;.$contents.&apos;$&apos;.$time.&apos;$$&apos;;</div><div class="line"></div><div class="line">	$fp = fopen(&apos;/home/lewis/message.txt&apos;, &apos;a&apos;);</div><div class="line"></div><div class="line">	fwrite($fp, $mString);</div><div class="line"></div><div class="line">	fclose($fp);</div><div class="line"></div><div class="line">	header(&quot;location:message-front.php&quot;);</div><div class="line"> ?&gt;</div></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+   <div>
+    
+      <div>
+    
+        <div style="text-align:center;color: #aaa;font-size:16px;">-------------本文结束,感谢您的阅读-------------</div>
+    
+</div>
+    
+   </div>
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/17/PHP1/" rel="next" title="PHP基础">
+                <i class="fa fa-chevron-left"></i> PHP基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://cdn.duitang.com/uploads/item/201505/13/20150513130159_szPUr.jpeg"
+                alt="Mr.Lewis" />
+            
+              <p class="site-author-name" itemprop="name">Mr.Lewis</p>
+              <p class="site-description motion-element" itemprop="description">blogs</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/LewisZhong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://user.qzone.qq.com/1825217374" target="_blank" title="QQZone">
+                      
+                        <i class="fa fa-fw fa-qq"></i>QQZone</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.php.cn/" title="PHP中文网" target="_blank">PHP中文网</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.imooc.com/" title="慕课网" target="_blank">慕课网</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#上传2MB以下的图片到指定路径"><span class="nav-number">1.</span> <span class="nav-text">上传2MB以下的图片到指定路径</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#uploadFile-front-php"><span class="nav-number">1.1.</span> <span class="nav-text">uploadFile-front.php</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#uploadFile-end-php"><span class="nav-number">1.2.</span> <span class="nav-text">uploadFile-end.php</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#验证码（需要PHP支持GD库）"><span class="nav-number">2.</span> <span class="nav-text">验证码（需要PHP支持GD库）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于文件的留言板"><span class="nav-number">3.</span> <span class="nav-text">基于文件的留言板</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#message-front-php"><span class="nav-number">3.1.</span> <span class="nav-text">message-front.php:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#message-end-php"><span class="nav-number">3.2.</span> <span class="nav-text">message-end.php</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.Lewis</span>
+
+  
+</div>
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共5.0k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>
