@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="other," />
+  <meta name="keywords" content="Interview," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="发表博文的步骤 1.打开git bush，输入hexo new post “helloWorld”，创建一个名字为“helloWorld.md”的文件2.打开该文件，在里面写你想发表的东西，写完后Ctrl+S保存3.在git bush中输入hexo g生成静态页面，执行hexo s查看本地预览效果4.如果觉得写的不错，执行hexo d将这篇文章上传到github，别人输入你的博客网址就能看到啦！">
-<meta name="keywords" content="other">
+<meta name="description" content="索引对性能的影响 大大减少服务器需要扫描的数据量，大大提高查询速度 帮助服务器避免排序和临时表 将随机I/O变为顺序I/O 降低写的速度，占用磁盘  索引的类型 普通索引：最基本的索引，没有任何约束 唯一索引：与普通索引类似，但具有唯一性约束 主键索引：特殊的唯一索引，不允许有空值_一个表只能有一个主键索引，但可以有多个唯一索引；主键索引一定是唯一索引，但唯一索引不一定是主键索引；主键可以和外键构">
+<meta name="keywords" content="Interview">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo的常用指令">
-<meta property="og:url" content="http:LewisZhong.github.io/2017/12/06/step/index.html">
+<meta property="og:title" content="MySQL索引考察点">
+<meta property="og:url" content="http:LewisZhong.github.io/2018/03/27/database2/index.html">
 <meta property="og:site_name" content="Mr.Lewis的博客">
-<meta property="og:description" content="发表博文的步骤 1.打开git bush，输入hexo new post “helloWorld”，创建一个名字为“helloWorld.md”的文件2.打开该文件，在里面写你想发表的东西，写完后Ctrl+S保存3.在git bush中输入hexo g生成静态页面，执行hexo s查看本地预览效果4.如果觉得写的不错，执行hexo d将这篇文章上传到github，别人输入你的博客网址就能看到啦！">
+<meta property="og:description" content="索引对性能的影响 大大减少服务器需要扫描的数据量，大大提高查询速度 帮助服务器避免排序和临时表 将随机I/O变为顺序I/O 降低写的速度，占用磁盘  索引的类型 普通索引：最基本的索引，没有任何约束 唯一索引：与普通索引类似，但具有唯一性约束 主键索引：特殊的唯一索引，不允许有空值_一个表只能有一个主键索引，但可以有多个唯一索引；主键索引一定是唯一索引，但唯一索引不一定是主键索引；主键可以和外键构">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-13T18:56:07.985Z">
+<meta property="og:updated_time" content="2018-03-27T01:49:32.441Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo的常用指令">
-<meta name="twitter:description" content="发表博文的步骤 1.打开git bush，输入hexo new post “helloWorld”，创建一个名字为“helloWorld.md”的文件2.打开该文件，在里面写你想发表的东西，写完后Ctrl+S保存3.在git bush中输入hexo g生成静态页面，执行hexo s查看本地预览效果4.如果觉得写的不错，执行hexo d将这篇文章上传到github，别人输入你的博客网址就能看到啦！">
+<meta name="twitter:title" content="MySQL索引考察点">
+<meta name="twitter:description" content="索引对性能的影响 大大减少服务器需要扫描的数据量，大大提高查询速度 帮助服务器避免排序和临时表 将随机I/O变为顺序I/O 降低写的速度，占用磁盘  索引的类型 普通索引：最基本的索引，没有任何约束 唯一索引：与普通索引类似，但具有唯一性约束 主键索引：特殊的唯一索引，不允许有空值_一个表只能有一个主键索引，但可以有多个唯一索引；主键索引一定是唯一索引，但唯一索引不一定是主键索引；主键可以和外键构">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http:LewisZhong.github.io/2017/12/06/step/"/>
+  <link rel="canonical" href="http:LewisZhong.github.io/2018/03/27/database2/"/>
 
 
 
 
 
-  <title>hexo的常用指令 | Mr.Lewis的博客</title>
+  <title>MySQL索引考察点 | Mr.Lewis的博客</title>
   
 
 
@@ -283,7 +283,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http:LewisZhong.github.io/2017/12/06/step/">
+    <link itemprop="mainEntityOfPage" href="http:LewisZhong.github.io/2018/03/27/database2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mr.Lewis">
@@ -300,7 +300,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo的常用指令</h1>
+          <h1 class="post-title" itemprop="name headline">MySQL索引考察点</h1>
         
 
         <div class="post-meta">
@@ -312,8 +312,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-06T11:39:47+08:00">
-                2017-12-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-27T08:56:36+08:00">
+                2018-03-27
               </time>
             
 
@@ -335,8 +335,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术技能/" itemprop="url" rel="index">
-                    <span itemprop="name">技术技能</span>
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
                   </a>
                 </span>
 
@@ -366,7 +366,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  116
+                  548
                 </span>
               
 
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -403,8 +403,37 @@
       
 
       
-        <p></p><h2>发表博文的步骤</h2><p></p>
-<p>1.打开git bush，输入<code>hexo new post “helloWorld”</code>，创建一个名字为“helloWorld.md”的文件</p><br><p>2.打开该文件，在里面写你想发表的东西，写完后<code>Ctrl+S</code>保存</p><br><p>3.在git bush中输入<code>hexo g</code>生成静态页面，执行<code>hexo s</code>查看本地预览效果</p><br><p>4.如果觉得写的不错，执行<code>hexo d</code>将这篇文章上传到github，别人输入你的博客网址就能看到啦！</p>
+        <h3 id="索引对性能的影响"><a href="#索引对性能的影响" class="headerlink" title="索引对性能的影响"></a>索引对性能的影响</h3><ol>
+<li>大大减少服务器需要扫描的数据量，大大提高查询速度</li>
+<li>帮助服务器避免排序和临时表</li>
+<li>将随机I/O变为顺序I/O</li>
+<li>降低写的速度，占用磁盘</li>
+</ol>
+<h3 id="索引的类型"><a href="#索引的类型" class="headerlink" title="索引的类型"></a>索引的类型</h3><ol>
+<li>普通索引：最基本的索引，没有任何约束</li>
+<li>唯一索引：与普通索引类似，但具有唯一性约束</li>
+<li>主键索引：特殊的唯一索引，不允许有空值<br>_一个表只能有一个主键索引，但可以有多个唯一索引；主键索引一定是唯一索引，但唯一索引不一定是主键索引；主键可以和外键构成参照完整性约束，防止数据不一致</li>
+<li>组合索引：将多个列组合在一起创建索引，可以覆盖多个列</li>
+<li>外键索引：只有InnoDB类型的表才可以使用外键索引，保证数据的一致性、完整性和实现级联操作</li>
+<li>全文索引：只能用于英文，只能用于MyISAM<br><em>5,6不常用</em></li>
+</ol>
+<h3 id="索引的创建原则"><a href="#索引的创建原则" class="headerlink" title="索引的创建原则"></a>索引的创建原则</h3><ol>
+<li>最适合索引的列是出现在<code>WHERE</code>子句中的列</li>
+<li>索引列的基数越大，效果越好</li>
+<li>对字符串进行索引，应该制定一个前缀长度，可以节省大量的索引空间</li>
+<li>根据情况创建复合索引以提高查询效率</li>
+<li>避免创建过多索引，索引会额外占用磁盘空间，减低写的操作效率</li>
+<li>主键应尽可能的选择较短的数据类型，可有效地减少磁盘的占用效率，提高查询速度</li>
+</ol>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li>复合索引遵循前缀原则</li>
+<li>like查询，% 不能在前，可以使用全文索引</li>
+<li>column is null 可以使用索引</li>
+<li>如果MySQL估计使用索引比全文扫描慢，会放弃使用索引</li>
+<li>如果or前的条件中的列有索引，后面的没有，则索引都不会被用到</li>
+<li>列类型是字符串， 查询时要给值加引号，否则索引失效</li>
+</ol>
+
       
     </div>
     
@@ -429,7 +458,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/other/" rel="tag"> <i class="fa fa-tag"></i> other</a>
+            <a href="/tags/Interview/" rel="tag"> <i class="fa fa-tag"></i> Interview</a>
           
         </div>
       
@@ -442,14 +471,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/03/27/database1-0/" rel="next" title="MySQL数据库基础考察点">
+                <i class="fa fa-chevron-left"></i> MySQL数据库基础考察点
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/02/mark/" rel="prev" title="cmd markdown在线编辑">
-                cmd markdown在线编辑 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/27/database3/" rel="prev" title="MySQL查询优化考察点">
+                MySQL查询优化考察点 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -646,7 +679,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">发表博文的步骤</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#索引对性能的影响"><span class="nav-number">1.</span> <span class="nav-text">索引对性能的影响</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引的类型"><span class="nav-number">2.</span> <span class="nav-text">索引的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#索引的创建原则"><span class="nav-number">3.</span> <span class="nav-text">索引的创建原则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意事项"><span class="nav-number">4.</span> <span class="nav-text">注意事项</span></a></li></ol></div>
             
 
           </div>
